@@ -1,14 +1,19 @@
+import React from "react";
+import UserForm from "./components/UserForm";
+import Scoreboard from "./components/Scoreboard";
+import QuestionCard from "./components/QuestionCard";
+import Result from "./components/Result";
 
-import './App.css'
-
-function App() {
- 
-
+export default function App() {
   return (
-    <>
-      <h1 className='bg-amber-700'>hello its test </h1>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col items-center justify-center p-5 relative">
+      <div className="absolute top-10 right-30">
+        <Scoreboard />
+      </div>
 
-export default App
+      <div className="w-full ">
+        <QuestionCard />
+      </div>
+    </div>
+  );
+}
