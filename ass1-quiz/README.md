@@ -1,16 +1,61 @@
-# React + Vite
+<h1 align="center">🧠 Quiz App</h1>
+<p align="center">
+  A dynamic and interactive quiz application built using <b>React</b> and <b>Tailwind CSS</b>.
+  <br>
+  Questions are fetched from an external API for a fun and unpredictable experience!
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<hr>
 
-Currently, two official plugins are available:
+<h2>✨ Features</h2>
+<ul>
+  <li>🎯 Fetches <b>30 random questions</b> from an API every time the quiz starts.</li>
+  <li>👤 User can <b>enter their name</b> before starting (saved using localStorage).</li>
+  <li>🧩 Each question has <b>four options</b> to choose from.</li>
+  <li>💚/❤️ Shows <b>green/red animation</b> before revealing the right answer.</li>
+  <li>🏆 A <b>scoreboard</b> with user profile appears on the top-right corner.</li>
+  <li>🔢 User answers <b>10 random questions</b> out of the 30 fetched.</li>
+  <li>📊 At the end, displays <b>final score</b> and how many were correct.</li>
+  <li>🔀 Options and question order are <b>randomized</b> each time.</li>
+</ul>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<hr>
 
-## React Compiler
+<h2>🧩 Tech Stack</h2>
+<ul>
+  <li><b>React.js</b> — For building the frontend components</li>
+  <li><b>Tailwind CSS</b> — For styling and responsive design</li>
+  <li><b>Open Trivia DB API</b> — To fetch dynamic quiz questions</li>
+</ul>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<p><b>API Used:</b><br>
+<code>https://opentdb.com/api.php?amount=30&type=multiple</code>
+</p>
 
-## Expanding the ESLint configuration
+<hr>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<h2>⚙️ How It Works</h2>
+<ul>
+  <li>User enters their name → saved using localStorage.</li>
+  <li>App fetches 30 questions from the API.</li>
+  <li>Displays 10 random questions with 4 shuffled options.</li>
+  <li>Shows correct/wrong answer animation on selection.</li>
+  <li>After 10 questions, shows total score and summary.</li>
+</ul>
+
+<hr>
+
+<h2>🚀 Future Enhancements</h2>
+<ul>
+  <li>Add category & difficulty filters.</li>
+  <li>Include a timer per question.</li>
+  <li>Store past scores and show progress.</li>
+  <li>Leaderboard for multiple users.</li>
+</ul>
+
+<hr>
+
+<h2>👨‍💻 Developed By</h2>
+<p><b>Aman Jangra</b><br>
+Frontend Developer — React & Tailwind Enthusiast
+</p>
