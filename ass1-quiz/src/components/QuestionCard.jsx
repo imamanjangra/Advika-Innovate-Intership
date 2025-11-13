@@ -10,23 +10,25 @@ export default function QuestionCard({ val ,mark }) {
 
   console.log(Api_question)
 
-  useEffect(() => {
-    if (Api_question.results && Api_question.results.length > 0) {
-      const q = Api_question.results[value];
-      const allOptions = [...q.incorrect_answers, q.correct_answer];
-      const shuffled = allOptions.sort(() => Math.random() - 0.5);
-      setOptions(shuffled);
-    }
-  }, [Api_question , value]);
-
-  if (!Api_question.results || Api_question.results.length === 0) {
+  if (!Api_question || Api_question.length === 0) {
     return <h2 className="text-center">Loading.....</h2>;
   }
 
-  const q = Api_question.results[value];
+  useEffect(() => {
+    if (Api_question && Api_question.length > 0) {
+      const q = Api_question?.[value];
+      const allOptions = [...q.incorrectAnswers, q.correctAnswer];
+      const mix = allOptions.sort(() => Math.random() - 0.5);
+      setOptions(mix);
+    }
+  }, [Api_question , value]);
+
+  
+
+  const ques = Api_question?.[value];
 
   const handleNext = () => {
-    if (checkAns === q.correct_answer) {
+    if (checkAns === ques.correctAnswer) {
       setScore((prev) => prev + 1);
       mark(score)
     }
@@ -46,9 +48,11 @@ export default function QuestionCard({ val ,mark }) {
       </h2>
 
       <p
-        className="text-xl text-center text-gray-800"
-        dangerouslySetInnerHTML={{ __html: q.question }}
-      />
+       className="text-xl text-center text-gray-800"
+      >
+       { ques?.question?.text}
+        
+      </p>
 
       <div className="flex flex-col gap-3 mt-3">
         {options.map((opt, i) => (
@@ -60,7 +64,7 @@ export default function QuestionCard({ val ,mark }) {
             }`}
           >
             <span className="text-blue-600">{i + 1}</span>
-            <span dangerouslySetInnerHTML={{ __html: opt }}></span>
+            <span>{opt}</span>
           </button>
         ))}
       </div>

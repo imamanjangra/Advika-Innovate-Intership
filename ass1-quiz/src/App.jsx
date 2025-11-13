@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import UserForm from "./components/UserForm";
 import Scoreboard from "./components/Scoreboard";
 import QuestionCard from "./components/QuestionCard";
@@ -14,11 +14,41 @@ export default function App(nocount) {
 
   console.log(nocount)
 
+  useEffect(() => {
+    const item = localStorage.getItem("username");
+    try {
+      if (item && item !== "undefined") {
+        setUsername(JSON.parse(item));
+      } else {
+        setUsername("");
+      }
+    } catch (error) {
+      console.log("No valid username in localStorage", error);
+      setUsername("");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("username" , JSON.stringify(username))
+    setStartQuiz(true)
+  } , [username])
+
 
   const again = () => {
+     setcount(false)
+    setMarks(0)
+    
+  }
+
+  const logout_methode = () => {
     setcount(false)
     setMarks(0)
-  }
+    localStorage.removeItem("username");
+    console.log("btn clicked")
+   setStartQuiz(false)
+  } 
+
+
   return (
 
     
@@ -35,7 +65,7 @@ export default function App(nocount) {
           !count ? (
             <div>
               <div className="absolute top-10 right-30">
-                  <Scoreboard userName={username} />
+                  <Scoreboard userName={username} logout={logout_methode} />
               </div>
               
               <div className="w-full  ">
@@ -48,7 +78,9 @@ export default function App(nocount) {
           
         )
       }
-    
+
+
+
       {/* 
  */}
 
