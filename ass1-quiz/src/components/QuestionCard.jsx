@@ -1,36 +1,35 @@
 import { useState, useEffect } from "react";
 import QuestionApi from "../Hook/QuestionApi";
 
-export default function QuestionCard({ val ,mark }) {
+export default function QuestionCard({ val, mark }) {
   const Api_question = QuestionApi();
   const [value, setValue] = useState(0);
   const [checkAns, setCheckAns] = useState("");
   const [score, setScore] = useState(0);
   const [options, setOptions] = useState([]);
-
-  console.log(Api_question)
-
-  if (!Api_question || Api_question.length === 0) {
-    return <h2 className="text-center">Loading.....</h2>;
-  }
+  const [initialLoading, setInitialLoading] = useState(true);
+  const ques = Api_question?.[value];
 
   useEffect(() => {
     if (Api_question && Api_question.length > 0) {
-      const q = Api_question?.[value];
+      const q = Api_question[value];
       const allOptions = [...q.incorrectAnswers, q.correctAnswer];
       const mix = allOptions.sort(() => Math.random() - 0.5);
       setOptions(mix);
+
+      
+      if (initialLoading) {
+        const timer = setTimeout(() => setInitialLoading(false), 1000);
+        return () => clearTimeout(timer);
+      }
     }
   }, [Api_question , value]);
 
-  
-
-  const ques = Api_question?.[value];
-
   const handleNext = () => {
     if (checkAns === ques.correctAnswer) {
-      setScore((prev) => prev + 1);
-      mark(score)
+      const newScore = score + 1;
+      setScore(newScore);
+      mark(newScore);
     }
 
     if (value + 1 === 10) {
@@ -41,30 +40,37 @@ export default function QuestionCard({ val ,mark }) {
     }
   };
 
+  if (initialLoading || !Api_question || Api_question.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-gray-400 mt-4 text-lg">Preparing your quiz...</p>
+      </div>
+    );
+  }
+
+
   return (
-    <div className="bg-white p-8 rounded-2xl flex flex-col gap-4 max-w-md mx-auto border border-gray-300">
-      <h2 className="text-gray-500 text-lg text-center">
+    <div className="bg-[#161B22] p-8 rounded-2xl flex flex-col gap-4 max-w-md mx-auto border border-gray-700 shadow-lg animate-fadeIn">
+      <h2 className="text-gray-400 text-lg text-center">
         Question {value + 1} of 10
       </h2>
 
-      <p
-       className="text-xl text-center text-gray-800"
-      >
-       { ques?.question?.text}
-        
-      </p>
+      <p className="text-xl text-center text-white">{ques?.question?.text}</p>
 
       <div className="flex flex-col gap-3 mt-3">
         {options.map((opt, i) => (
           <button
             key={i}
             onClick={() => setCheckAns(opt)}
-            className={`flex items-center gap-4 p-3 rounded-lg border transition-all text-left ${
-              checkAns === opt ? "bg-blue-100 border-blue-400" : "bg-gray-100 border-gray-300 hover:bg-blue-50"
+            className={`flex items-center gap-3 p-3 rounded-lg border transition-all text-left ${
+              checkAns === opt
+                ? "bg-blue-900 border-blue-500"
+                : "bg-[#0D1117] border-gray-700 hover:bg-[#1E2631]"
             }`}
           >
-            <span className="text-blue-600">{i + 1}</span>
-            <span>{opt}</span>
+            <span className="text-blue-400">{i + 1}.</span>
+            <span className="text-gray-200">{opt}</span>
           </button>
         ))}
       </div>
@@ -72,7 +78,7 @@ export default function QuestionCard({ val ,mark }) {
       <div className="flex justify-end mt-2">
         <button
           onClick={handleNext}
-          className="px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white transition-all"
+          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white"
         >
           Next
         </button>

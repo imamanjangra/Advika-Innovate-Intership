@@ -1,14 +1,19 @@
-export default function Scoreboard({ userName , logout }) {
+
+
+export default function Scoreboard({ userName, logout }) {
   return (
-    <div className="bg-white px-5 py-3 rounded-lg shadow-md flex items-center gap-3 border border-gray-200">
-      <div className="bg-blue-300 w-10 h-10 rounded-full"></div>
+    <div className="bg-[#161B22] px-5 py-3 rounded-lg shadow-md flex items-center gap-4 border border-gray-700">
+      <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold">
+        {userName[0]?.toUpperCase()}
+      </div>
       <div className="flex flex-col">
-        <p className="text-sm font-semibold text-gray-800">{userName}</p>
-        <p className="text-gray-500">Score = 10</p>
+        <p className="text-sm font-semibold text-gray-100">{userName}</p>
+        
       </div>
       <button
-      onClick={logout}
-      className="ml-auto px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
+        onClick={logout}
+        className="ml-auto px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-md"
+      >
         Logout
       </button>
     </div>
