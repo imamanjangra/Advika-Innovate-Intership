@@ -17,13 +17,12 @@ export default function QuestionCard({ val, mark }) {
       const mix = allOptions.sort(() => Math.random() - 0.5);
       setOptions(mix);
 
-      
       if (initialLoading) {
-        const timer = setTimeout(() => setInitialLoading(false), 1000);
+        const timer = setTimeout(() => setInitialLoading(false), 800);
         return () => clearTimeout(timer);
       }
     }
-  }, [Api_question , value]);
+  }, [Api_question, value]);
 
   const handleNext = () => {
     if (checkAns === ques.correctAnswer) {
@@ -40,11 +39,25 @@ export default function QuestionCard({ val, mark }) {
     }
   };
 
+  // 🩶 Skeleton Loader
   if (initialLoading || !Api_question || Api_question.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-gray-400 mt-4 text-lg">Preparing your quiz...</p>
+      <div className="bg-[#161B22] p-8 rounded-2xl flex flex-col gap-4 max-w-md mx-auto border border-gray-700 shadow-lg animate-fadeIn">
+        <div className="h-6 w-32 bg-gray-700 rounded-md animate-pulse mx-auto"></div>
+        <div className="h-6 w-3/4 bg-gray-700 rounded-md animate-pulse mx-auto mt-4"></div>
+
+        <div className="flex flex-col gap-3 mt-5">
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="h-10 bg-gray-800 rounded-md animate-pulse"
+            ></div>
+          ))}
+        </div>
+
+        <div className="flex justify-end mt-4">
+          <div className="h-10 w-80 bg-gray-700 rounded-md animate-pulse"></div>
+        </div>
       </div>
     );
   }
@@ -58,18 +71,19 @@ export default function QuestionCard({ val, mark }) {
 
       <p className="text-xl text-center text-white">{ques?.question?.text}</p>
 
-      <div className="flex flex-col gap-3 mt-3">
+     <div className="flex flex-col gap-3 mt-3">
         {options.map((opt, i) => (
           <button
             key={i}
             onClick={() => setCheckAns(opt)}
-            className={`flex items-center gap-3 p-3 rounded-lg border transition-all text-left ${
+            className={`p-3 rounded-lg border transition-all text-left ${
               checkAns === opt
-                ? "bg-blue-900 border-blue-500"
+                ? opt === ques.correctAnswer
+                  ? "bg-green-700 border-green-500"
+                  : "bg-red-700 border-red-500"
                 : "bg-[#0D1117] border-gray-700 hover:bg-[#1E2631]"
             }`}
           >
-            <span className="text-blue-400">{i + 1}.</span>
             <span className="text-gray-200">{opt}</span>
           </button>
         ))}
