@@ -41,7 +41,7 @@ export default function QuestionCard({ val, mark }) {
     }
   };
 
-  // 🩶 Skeleton Loader
+  
   if (initialLoading || !Api_question || Api_question.length === 0) {
     return (
       <div className="bg-[#161B22] p-8 rounded-2xl flex flex-col gap-4 max-w-md mx-auto border border-gray-700 shadow-lg animate-fadeIn">
