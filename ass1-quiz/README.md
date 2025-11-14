@@ -12,9 +12,9 @@ I created a simple and interactive <strong>Quiz App</strong> with 10 multiple-ch
 
 <h3 style="font-family:Arial; font-size:17px;">🚀 Live Demo</h3>
 <p>
-<a href="https://quizapp-one-pi.vercel.app/" target="_blank" 
-   style="font-family:Arial; font-size:15px; color:#2563eb; text-decoration:none;">
-   https://quizapp-one-pi.vercel.app/
+<a href="https://quizapp-one-pi.vercel.app/" target="_blank"
+   style="color:#2563eb; text-decoration:none;">
+   Click here
 </a>
 </p>
 
