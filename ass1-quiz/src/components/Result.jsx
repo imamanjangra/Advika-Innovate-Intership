@@ -3,7 +3,6 @@
 export default function Result({ corrAns, tryAgain }) {
   
 
- 
 
   return (
     <div className="bg-[#161B22] p-10 rounded-lg shadow-lg text-center border border-gray-700 max-w-md mx-auto text-gray-200">
@@ -12,7 +11,10 @@ export default function Result({ corrAns, tryAgain }) {
         You scored <span className="text-blue-400 font-semibold">{corrAns} / 10</span>
       </p>
       <p className="text-gray-400 text-sm mt-1">
-        Great job! You answered {corrAns} correctly.
+        {
+          corrAns < 3 ? "Your score is low. Keep practicing, you’ll get better!" : corrAns > 6 ? "Excellent performance! Your score is impressive — keep it up!" : "Good job! Your score is decent — a little more practice and you’ll improve even more."
+        }
+        
       </p>
 
       <button

@@ -5,7 +5,10 @@ export default function UserForm({ isStart, setNameis }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name.trim()) return;
+    if(name == ""){
+      alert("Enter your username!")
+      return;
+    }
     setNameis(name);
     isStart(true);
     setName("");

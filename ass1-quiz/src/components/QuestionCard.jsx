@@ -9,6 +9,7 @@ export default function QuestionCard({ val, mark }) {
   const [options, setOptions] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const ques = Api_question?.[value];
+  const [disable , setdisable] = useState(false)
 
   useEffect(() => {
     if (Api_question && Api_question.length > 0) {
@@ -30,6 +31,7 @@ export default function QuestionCard({ val, mark }) {
       setScore(newScore);
       mark(newScore);
     }
+    setdisable(false)
 
     if (value + 1 === 10) {
       val(true);
@@ -75,13 +77,10 @@ export default function QuestionCard({ val, mark }) {
         {options.map((opt, i) => (
           <button
             key={i}
-            onClick={() => setCheckAns(opt)}
+            onClick={() => {setCheckAns(opt); setdisable(true)}}
+            disabled={disable}
             className={`p-3 rounded-lg border transition-all text-left ${
-              checkAns === opt
-                ? opt === ques.correctAnswer
-                  ? "bg-green-700 border-green-500"
-                  : "bg-red-700 border-red-500"
-                : "bg-[#0D1117] border-gray-700 hover:bg-[#1E2631]"
+              opt == ques.correctAnswer && checkAns !== "" ? "bg-green-700 border-green-500" : checkAns == opt && checkAns !== ques.correctAnswer ? "bg-red-700 border-red-500" : "bg-[#0D1117] border-gray-700 hover:bg-[#1E2631]"
             }`}
           >
             <span className="text-gray-200">{opt}</span>
