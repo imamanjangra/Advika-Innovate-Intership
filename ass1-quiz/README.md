@@ -41,10 +41,4 @@ I created a simple and interactive <strong>Quiz App</strong> with 10 multiple-ch
   <li>Vercel</li>
 </ul>
 
-<hr>
 
-<h3 style="font-family:Arial; font-size:17px;">👨‍💻 Developer</h3>
-<p style="font-family:Arial; font-size:15px;">
-<strong>Aman Jangra</strong><br>
-Intern at Adiva Innovate
-</p>
