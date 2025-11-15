@@ -19,7 +19,7 @@ export default function UserForm({ isStart, setNameis }) {
     <form onSubmit={handleSubmit}>
       <div className="bg-[#161B22] p-8 rounded-xl shadow-lg flex flex-col items-center gap-5 w-full max-w-md mx-auto border border-gray-700">
         <h1 className="text-3xl font-bold text-white">Welcome to the Quiz</h1>
-        <p className="text-gray-400 text-sm">Enter your name to begin</p>
+        <p className="text-gray-400 text-sm">Enter your name to start</p>
 
         <input
           type="text"
