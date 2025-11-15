@@ -15,10 +15,12 @@ export default function App() {
   useEffect(() => {
     const item = localStorage.getItem("username");
     try {
-      if (item && item !== "undefined") {
+      if (item && item !== "undefined" && item.length > 0) {
         setUsername(JSON.parse(item));
         setStartQuiz(true);
+        
       }
+      
     } catch {
       setUsername("");
     }
@@ -27,8 +29,10 @@ export default function App() {
 
   
   useEffect(() => {
+  if (username && username.length > 0) {
     localStorage.setItem("username", JSON.stringify(username));
-  }, [username]);
+  }
+}, [username]);
 
   const again = () => {
     setCount(false);

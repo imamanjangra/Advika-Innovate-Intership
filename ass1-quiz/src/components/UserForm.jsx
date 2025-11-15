@@ -13,6 +13,7 @@ export default function UserForm({ isStart, setNameis }) {
     isStart(true);
     setName("");
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
