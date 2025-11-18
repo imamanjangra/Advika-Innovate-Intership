@@ -1,17 +1,18 @@
+import Hindi_Api from "../Hook/Hindi_Api";
 import MovieCard from "./MovieCard";
-import Move_Api from "../Hook/Move_Api";
 
-export function TopMovies() {
-  const weekly_api = Move_Api(); // initially null
-  // console.log(weekly_api);
+
+export function HindiMove() {
+  const Hindi_Api_data = Hindi_Api()
+//   console.log(Hindi_Api_data);
 
   return (
     <div className="mt-10">
-      <h1 className="text-3xl font-bold mb-6 text-white">🔥 Top Movies</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white">🔥 Hindi Moves </h1>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
         {/* Check if weekly_api.results exists before mapping */}
-        {weekly_api?.results?.map((movie) => (
+        {Hindi_Api_data?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             title={movie.title}

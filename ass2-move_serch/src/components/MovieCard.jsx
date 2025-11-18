@@ -1,35 +1,30 @@
-export default function MovieCard() {
+
+export default function MovieCard({title , year  ,poster , rating}) {
+
   return (
-    <div className="group bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-lg">
+    <div className="relative group w-60 bg-black rounded-xl overflow-hidden shadow-lg hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+      <img     
+        src={poster}
+        className="w-full h-80 object-cover transition-all duration-500 group-hover:brightness-75"
+      />
 
-    
-      <div className="relative h-80 w-full overflow-hidden">
+      <div className="absolute inset-0  from-black/90 via-black/40 to-transparent
+      opacity-100 group-hover:opacity-100 transition duration-500">
 
-       
-        <img
-          src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=800"
-          alt="Movie Poster"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-
-       
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500"></div>
       </div>
 
-   
-      <div className="p-4 space-y-2">
-        <h2 className="text-xl font-semibold">The Dark Knight</h2>
-        <p className="text-gray-400 text-sm">Release Year: 2008</p>
+      <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md 
+      text-yellow-400 text-xs font-semibold">
+        {rating}⭐
       </div>
 
-      
-      <div className="p-4 border-t border-gray-800 flex justify-between items-center">
-        <button className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
-          View Details
-        </button>
-
-        <span className="text-yellow-400 font-bold">⭐ 9.0</span>
+      <div className="absolute bottom-0 w-full p-4 space-y-1">
+        <h3 className="text-lg font-semibold text-white tracking-wide">
+          {title}
+        </h3>
+        <p className="text-gray-300 text-xs">{year}• Action / Thriller</p>
       </div>
+
     </div>
   );
 }
