@@ -1,16 +1,16 @@
 import { useState } from "react";
-import useSearchResult from "../Hook/Search_result";
-import MovieCard from "../components/MovieCard";
+import { useNavigate } from "react-router-dom";
 
 export function SearchBar() {
   const [value, setValue] = useState("");
-  const [query, setQuery] = useState(""); // submit ke liye
-  const apiData = useSearchResult(query); // pass query to hook
+  
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery(value); // hook ko update karo
-    setValue(""); // input clear
+    // setQuery(value); 
+    navigate(`/search/${value}`)
+    setValue(""); 
   };
 
   return (
@@ -31,18 +31,7 @@ export function SearchBar() {
         </button>
       </form>
 
-      {/* Display results */}
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-        {apiData?.results?.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            year={movie.release_date?.substring(0, 4)}
-            poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            rating={movie.vote_average?.toFixed(1)}
-          />
-        ))}
-      </div>
+      
     </div>
   );
 }

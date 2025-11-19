@@ -14,7 +14,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout/>}>
       <Route index element={<HomePage />} />
       <Route path="moviedetails" element={<MovieDetails />} />
-      <Route path="searchresults" element={<SearchResults />} />
+      <Route path="/search/:query" element={<SearchResults />} />
     </Route>
   )
 );
