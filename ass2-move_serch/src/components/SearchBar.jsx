@@ -8,7 +8,6 @@ export function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setQuery(value); 
     navigate(`/search/${value}`)
     setValue(""); 
   };

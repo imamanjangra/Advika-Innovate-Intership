@@ -3,10 +3,12 @@ import MovieCard from "../components/MovieCard";
 import useSearchResult from "../Hook/Search_result";
 import { SearchBar } from "../components/SearchBar";
 import { MovieCardSkeleton } from "../components/MovieCardSkeleton";
+import Genre_Api from "../Hook/getGenre";
 
 export default function SearchResults() {
   const { query } = useParams();
   const {apiData , loading} = useSearchResult(query);
+  const genreMap = Genre_Api()
   console.log(apiData)
 
   return (
@@ -17,17 +19,24 @@ export default function SearchResults() {
       </h1>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {
-        loading ? Array.from({length : 10}).map((_,i) => <MovieCardSkeleton key={i}/>)
-        : apiData?.results?.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            year={movie.release_date?.substring(0, 4)}
-            poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            rating={movie.vote_average?.toFixed(1)}
-          />
-        ))}
+         {loading
+                  ? Array.from({ length: 6 }).map((__, i) => <MovieCardSkeleton key={i} />)
+                  : apiData?.results?.map((movie) => {
+        
+                      const genreNames = movie.genre_ids
+                        ?.map(id => genreMap[id]).filter(Boolean).join(", ")
+                      return (
+                        <MovieCard
+                          key={movie.id}
+                           id={movie.id}
+                          title={movie.title}
+                          year={movie.release_date?.substring(0, 4)}
+                          poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                          rating={movie.vote_average?.toFixed(1)}
+                          genre={genreNames}  
+                        />
+                      );
+                    })}
       </div>
     </div>
   );

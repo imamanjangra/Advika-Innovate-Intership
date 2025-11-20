@@ -1,4 +1,17 @@
-export default function MovieCard({ title, year, poster, rating , genre }) {
+import { useNavigate } from "react-router-dom";
+
+export default function MovieCard({id ,  title, year, poster, rating , genre }) {
+
+
+  const navigate = useNavigate()
+
+  console.log(id)
+
+  const handle_input = () => {
+    navigate(`/moviedetails/${id}`)
+  }
+
+
   return (
     <div className="w-60 bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer">
       
@@ -25,7 +38,9 @@ export default function MovieCard({ title, year, poster, rating , genre }) {
           <h3 className="text-white text-base font-bold line-clamp-2 overflow-hidden">{title}</h3>
           <p className="text-gray-300 text-xs">{year} • {genre}</p>
         </div>
-        <button className="flex-shrink-0 bg-yellow-500 text-black font-semibold py-1 px-3 rounded-md hover:bg-yellow-400 transition-colors duration-300 text-sm">
+        <button
+        onClick={handle_input}
+        className="flex-shrink-0 bg-yellow-500 text-black font-semibold py-1 px-3 rounded-md hover:bg-yellow-400 transition-colors duration-300 text-sm">
           View
         </button>
       </div>

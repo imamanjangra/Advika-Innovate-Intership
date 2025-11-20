@@ -9,7 +9,7 @@ export default function Hindi_Api() {
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=hi&sort_by=popularity.desc`)
       .then(resp => resp.json())
-    .then(data => {setApiData(data); setLoading(false)})
+     .then(data => {setApiData(data); setLoading(false)})
       .catch(err => console.error("API error:", err));
   }, []);
 
