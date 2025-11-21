@@ -6,7 +6,7 @@ import { MovieCardSkeleton } from "./MovieCardSkeleton";
 export function TopMovies() {
   const { apiData, loading } = Move_Api();
   const genreMap = Genre_Api(); 
-  console.log(apiData)
+  // console.log(apiData)
 
   console.log(genreMap)
   return (

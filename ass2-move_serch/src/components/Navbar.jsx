@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="bg-gray-900 text-white p-4 shadow-md flex justify-between items-center">
-      <h1 className="text-2xl font-bold">🎬 MovieSearch</h1>
-
+      <NavLink to="/">
+      <h1 className="text-2xl font-bold">MovieSearch</h1>
+      </NavLink>
       <ul className="flex gap-6 text-lg">
         <NavLink
           to="/"
