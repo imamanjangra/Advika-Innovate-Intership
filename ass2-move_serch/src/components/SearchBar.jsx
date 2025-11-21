@@ -8,7 +8,7 @@ export function SearchBar() {
   const API_KEY = "ed7d88839c4f0e683b44fd50dd8de839";
   const navigate = useNavigate();
 
-  // Fetch suggestions
+  
   useEffect(() => {
     if (value.trim() === "") {
       setApiData([]);
@@ -23,7 +23,7 @@ export function SearchBar() {
       .catch((err) => console.error("API error:", err));
   }, [value]);
 
-  // Submit search form
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value.trim() === "") return;
@@ -32,7 +32,7 @@ export function SearchBar() {
     setValue("");
   };
 
-  // Click suggestion
+ 
   const handleSelect = (movie) => {
     navigate(`/search/${encodeURIComponent(movie.title)}`);
     setShowSuggest(false);
@@ -41,7 +41,7 @@ export function SearchBar() {
 
   return (
     <div className="w-full flex flex-col items-center mt-6 relative">
-      {/* Search Form */}
+     
       <form onSubmit={handleSubmit} className="flex w-3/4 md:w-1/2">
         <input
           value={value}
@@ -61,7 +61,7 @@ export function SearchBar() {
         </button>
       </form>
 
-      {/* Suggestions Dropdown */}
+    
       {showSuggest && apiData.length > 0 && (
         <div className="absolute top-16 w-3/4 md:w-1/2 bg-gray-900 border border-gray-700 rounded-xl shadow-xl max-h-80 overflow-y-auto z-50">
           {apiData.slice(0, 7).map((movie) => (
