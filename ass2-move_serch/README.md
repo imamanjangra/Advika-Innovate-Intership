@@ -1,16 +1,42 @@
-# React + Vite
+<h2 style="text-align:center; font-family:Arial; color:#555; font-size:18px;">
+Assignment 2 – Movie Search App
+</h2>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p style="font-family:Arial; font-size:15px; line-height:1.5;">
+This is my second assignment for the <strong>Adiva Innovate Internship</strong>.  
+I created a modern and responsive <strong>Movie Search App</strong> that allows users to search for movies, see trending movies, and view detailed information for each movie.
+</p>
 
-Currently, two official plugins are available:
+<hr>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h3 style="font-family:Arial; font-size:17px;">🚀 Live Demo</h3>
+<p>
+<a href="https://moviesearch-flax.vercel.app/" target="_blank"
+   style="color:#2563eb; text-decoration:none;">
+   Click here
+</a>
+</p>
 
-## React Compiler
+<hr>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<h3 style="font-family:Arial; font-size:17px;">✨ Features</h3>
+<ul style="font-family:Arial; font-size:15px; line-height:1.5;">
+  <li>Real-time movie search</li>
+  <li>Live suggestions in the search bar</li>
+  <li>Top and trending movies section</li>
+  <li>Movie details page with poster, rating, release date, description, and genres</li>
+  <li>Fully responsive UI for mobile and desktop</li>
+  <li>Fast data fetching using TMDB API</li>
+  <li>Smooth routing with React Router</li>
+</ul>
 
-## Expanding the ESLint configuration
+<hr>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<h3 style="font-family:Arial; font-size:17px;">🛠️ Technologies Used</h3>
+<ul style="font-family:Arial; font-size:15px; line-height:1.5;">
+  <li>React.js</li>
+  <li>Tailwind CSS</li>
+  <li>JavaScript</li>
+  <li>HTML & CSS</li>
+  <li>Vercel</li>
+</ul>
