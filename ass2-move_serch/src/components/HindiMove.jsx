@@ -7,7 +7,7 @@ import { MovieCardSkeleton } from "./MovieCardSkeleton";
 export function HindiMove() {
   const {apiData , loading} = Hindi_Api()
   const genreMap = Genre_Api();
-
+  
   return (
     <div className="mt-10">
       <h1 className="text-3xl font-bold mb-6 text-white">🔥 Hindi Moves </h1>
@@ -16,7 +16,7 @@ export function HindiMove() {
         
  {loading
           ? Array.from({ length: 6 }).map((__, i) => <MovieCardSkeleton key={i} />)
-          : apiData?.results?.map((movie) => {
+          : apiData?.results?.slice(0, 10).map((movie) => {
 
               const genreNames = movie.genre_ids
                 ?.map(id => genreMap[id]).filter(Boolean).join(", ")

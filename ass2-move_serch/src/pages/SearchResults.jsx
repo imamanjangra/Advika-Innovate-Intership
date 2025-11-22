@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import useSearchResult from "../Hook/Search_result";
 import { SearchBar } from "../components/SearchBar";
@@ -9,11 +9,20 @@ export default function SearchResults() {
   const { query } = useParams();
   const { apiData, loading } = useSearchResult(query);
   const genreMap = Genre_Api();
+  const navigate = useNavigate();
 
   return (
     <div className="px-4 md:px-6 py-6 md:py-8">
       <SearchBar />
-      <h1 className="text-2xl md:text-3xl font-bold mb-6 mt-6 md:mt-10 text-white">
+
+      <button
+        onClick={() => navigate(-1)}
+        className="mt-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition mb-4"
+      >
+        ← Back
+      </button>
+
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-white">
         Search Results for: <span className="text-blue-500">{query}</span>
       </h1>
 

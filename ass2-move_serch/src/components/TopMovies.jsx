@@ -16,7 +16,7 @@ export function TopMovies() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
         {loading
           ? Array.from({ length: 6 }).map((__, i) => <MovieCardSkeleton key={i} />)
-          : apiData?.results?.map((movie) => {
+          : apiData?.results?.slice(0, 10).map((movie) => {
 
               const genreNames = movie.genre_ids
                 ?.map(id => genreMap[id]).filter(Boolean).join(", ")
