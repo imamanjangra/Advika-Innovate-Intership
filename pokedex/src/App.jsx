@@ -1,12 +1,20 @@
 
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import HomePage from './Pages/HomePage'
+import PokemonDetailsPage from './Pages/PokemonDetailsPage'
+
+
 
 function App() {
 
 
   return (
     <>
-      <h4 className='bg-green-500'>hello </h4>
+      <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/detailsPage' element={<PokemonDetailsPage/>}/>
+      </Routes>
     </>
   )
 }
