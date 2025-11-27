@@ -1,4 +1,3 @@
-import Carousel from "../components/Carousel";
 import EvolutionSection from "../components/EvolutionSection";
 import MovesTable from "../components/MovesTable";
 
@@ -10,7 +9,7 @@ export default function PokemonDetailsPage() {
 
       </div>
 
-      <Carousel />
+     
       
       <EvolutionSection />
       <MovesTable />

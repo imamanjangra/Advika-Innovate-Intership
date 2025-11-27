@@ -2,7 +2,7 @@ export default function SearchBar() {
   return (
     <div className="relative max-w-md mx-auto mt-6">
       <span className="absolute inset-y-0 left-3 flex items-center text-gray-400 dark:text-gray-400">
-        🔍
+        
       </span>
       <input
         type="text"
