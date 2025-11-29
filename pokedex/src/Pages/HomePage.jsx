@@ -5,6 +5,7 @@ import Pagination from "../components/Pagination";
 import usePokemonList from "../Hooks/usePokemonList";
 import HeroSection from "../components/Herosection";
 import PokemonCard from "../Components/PokemonCard";
+// import FilterBtn from "../components/FilterBtn";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +29,7 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto p-5">
        <HeroSection/>
-
+        {/* <FilterBtn/> */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-10">
           {pokemonData.map((pokemon, i) => (
             <PokemonCard key={i} pokemon={pokemon} />

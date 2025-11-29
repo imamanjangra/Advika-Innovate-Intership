@@ -1,66 +1,52 @@
 export default function Pagination({ currentPage, setCurrentPage, totalPages }) {
-
-  const createPages = () => {
-    let pages = [];
-
-    if (currentPage > 3) pages.push(1);
+  const windowSize = 5; 
 
 
-    if (currentPage > 4) pages.push("...");
+  const startPage = Math.floor((currentPage - 1) / windowSize) * windowSize + 1;
+  const endPage = Math.min(startPage + windowSize - 1, totalPages);
 
-    for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-      if (i > 1 && i < totalPages) pages.push(i);
-    }
-
- 
-    if (currentPage < totalPages - 3) pages.push("...");
-
-    if (currentPage < totalPages - 2) pages.push(totalPages);
-
-    return pages;
-  };
-
-  const handleClick = (page) => {
-    if (page === "...") return;
-    setCurrentPage(page);
-  };
+  const pages = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
 
   return (
-    <div className="flex justify-center items-center gap-2 mt-6 flex-wrap">
+    <div className="flex justify-center gap-2 mt-5">
 
-     
-      <button 
-        disabled={currentPage === 1} 
-        onClick={() => setCurrentPage(currentPage - 1)}
-        className="px-3 py-1 text-sm rounded bg-gray-300 dark:bg-gray-700 disabled:opacity-40"
-      >
-        Prev
-      </button>
-
-      {createPages().map((page, i) => (
-        <button
-          key={i}
-          onClick={() => handleClick(page)}
-          className={`px-3 py-1 rounded text-sm ${
-            currentPage === page
-              ? "bg-blue-500 text-white"
-              : page === "..."
-              ? "cursor-default bg-transparent"
-              : "bg-gray-200 dark:bg-gray-700 dark:text-white"
-          }`}
+      
+      {startPage > 1 && (
+        <button 
+          onClick={() => setCurrentPage(startPage - 1)}
+          className="px-3 py-1 rounded bg-gray-300 dark:bg-gray-700"
         >
-          {page}
+          ...
+        </button>
+      )}
+
+      
+      {pages.map(num => (
+        <button
+          key={num}
+          onClick={() => setCurrentPage(num)}
+          className={`px-3 py-1 rounded 
+            ${num === currentPage 
+              ? "bg-blue-500 text-white" 
+              : "bg-gray-200 dark:bg-gray-600 dark:text-white"
+            }`}
+        >
+          {num}
         </button>
       ))}
 
-      <button 
-        disabled={currentPage === totalPages} 
-        onClick={() => setCurrentPage(currentPage + 1)}
-        className="px-3 py-1 text-sm rounded bg-gray-300 dark:bg-gray-700 disabled:opacity-40"
-      >
-        Next
-      </button>
-
+   
+      {endPage < totalPages && (
+        <button 
+          onClick={() => setCurrentPage(endPage + 1)}
+          className="px-3 py-1 rounded bg-gray-300 dark:bg-gray-700"
+        >
+          ...
+        </button>
+      )}
     </div>
   );
 }
