@@ -1,9 +1,20 @@
+import { useNavigate } from "react-router-dom";
+
 export default function PokemonCard({ pokemon }) {
   if (!pokemon) return null;
 
+  const navigate = useNavigate()
+
+  const passvalue = () => {
+    navigate(`/detailsPage/${pokemon.id}`)
+  }
   return (
-    <div className="p-4 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-      <div className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
+
+    <div
+    className="p-4 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+      <div
+      onClick={passvalue}
+      className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
         <img src={pokemon.sprites.other["official-artwork"].front_default} className="w-24 h-24"/>
       </div>
 

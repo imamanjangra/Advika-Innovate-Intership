@@ -1,18 +1,51 @@
-import EvolutionSection from "../components/EvolutionSection";
-import MovesTable from "../components/MovesTable";
+import { useParams } from "react-router-dom";
+import detailpage_api from "../Hooks/detailpage_api";
+import HeaderControls from "../components/HeaderControls";
+import PokemonMedia from "../components/PokémonMedia";
+import PokemonMainInfo from "../components/PokemonMainInfo";
+import StatsChart from "../components/StatsChart";
+import Evolutions from "../components/Evolutions";
+import MovesList from "../components/MovesList";
 
 export default function PokemonDetailsPage() {
+
+  const { id } = useParams();
+  const api_data = detailpage_api(id);
+  console.log(api_data);
+  if (!api_data) return <p className="text-center p-10 text-xl">Loading...</p>;
+
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <div className="flex justify-between">
-        <h2 className="text-3xl font-bold dark:text-white">Pokémon Details</h2>
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0b0d10] dark:text-gray-100 transition-all duration-300">
+      <div className="max-w-6xl mx-auto p-6 space-y-10">
+
+        <div className="p-6 rounded-xl bg-white border border-gray-200 shadow-md 
+        dark:bg-white/5 dark:border-white/10 dark:shadow-lg transition-all">
+          
+          <HeaderControls id={id} />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+            <PokemonMedia data={api_data} />
+            <PokemonMainInfo data={api_data} />
+          </div>
+        </div>
+
+        
+        <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
+        dark:bg-white/5 dark:border-white/10">
+          <StatsChart data={api_data} />
+        </div>
+
+        <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
+        dark:bg-white/5 dark:border-white/10">
+          <Evolutions data={api_data} />
+        </div>
+
+        <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
+        dark:bg-white/5 dark:border-white/10">
+          <MovesList data={api_data} />
+        </div>
 
       </div>
-
-     
-      
-      <EvolutionSection />
-      <MovesTable />
     </div>
   );
 }
