@@ -6,6 +6,7 @@ import PokemonMainInfo from "../components/PokemonMainInfo";
 import StatsChart from "../components/StatsChart";
 import Evolutions from "../components/Evolutions";
 import MovesList from "../components/MovesList";
+import PokemonImageViewer from "../components/PokemonImageViewer";
 
 export default function PokemonDetailsPage() {
 
@@ -30,6 +31,10 @@ export default function PokemonDetailsPage() {
         </div>
 
         
+        <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
+        dark:bg-white/5 dark:border-white/10">
+          <PokemonImageViewer id={id}/>
+        </div>
         <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
         dark:bg-white/5 dark:border-white/10">
           <StatsChart data={api_data} />

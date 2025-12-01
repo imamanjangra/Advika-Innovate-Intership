@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function usePokemonList(page = 1, limit = 25) {
+export default function usePokemonList(page, limit) {
   const [pokemonList, setPokemonList] = useState(null);
 
   useEffect(() => {

@@ -12,8 +12,9 @@ export default function Home() {
   const limit = 25;
 
   const apiList = usePokemonList(currentPage, limit);
+  console.log(apiList)
   const [pokemonData, setPokemonData] = useState([]);
-
+  console.log(pokemonData);
   useEffect(() => {
     if (!apiList?.results) return;
 
@@ -29,14 +30,13 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto p-5">
        <HeroSection/>
-        {/* <FilterBtn/> */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-10">
           {pokemonData.map((pokemon, i) => (
             <PokemonCard key={i} pokemon={pokemon} />
           ))}
         </div>
 
-        {/* pagination */}
+        
         <Pagination 
           currentPage={currentPage} 
           setCurrentPage={setCurrentPage} 

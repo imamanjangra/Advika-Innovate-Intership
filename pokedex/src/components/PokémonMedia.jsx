@@ -1,6 +1,6 @@
 export default function PokemonMedia({ data }) {
   const { poke } = data;
-
+  // console.log(poke)
   return (
     <div className="space-y-3 text-center">
       <img 

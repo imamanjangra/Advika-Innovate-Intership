@@ -17,7 +17,7 @@ export default function detailpage_api(id) {
 
         setData({ poke, species, evolutionChain });
       } catch (err) {
-        console.error("Error fetching Pokémon data:", err);
+        console.error("fetching error :", err);
       }
     }
 
