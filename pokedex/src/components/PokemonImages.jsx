@@ -1,4 +1,4 @@
-export default function PokemonMedia({ data }) {
+export default function PokemonImages({ data }) {
   const { poke } = data;
   // console.log(poke)
   return (
