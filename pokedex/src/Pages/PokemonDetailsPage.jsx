@@ -6,13 +6,14 @@ import PokemonMainInfo from "../components/PokemonMainInfo";
 import StatsChart from "../components/StatsChart";
 import Evolutions from "../components/Evolutions";
 import MovesList from "../components/MovesList";
+import Loader from "../components/Loader";
 
 export default function PokemonDetailsPage() {
 
   const { id } = useParams(); 
   const api_data = detailpage_api(id);
   console.log(api_data);
-  if (!api_data) return <p className="text-center p-10 text-xl">Loading...</p>;
+  if (!api_data) return <div className="text-center p-10 text-xl"><Loader/></div>;
 
   return (
     <div className="min-h-screen bg-gray-50  dark:bg-gray-900 dark:text-gray-100 transition-all duration-300">

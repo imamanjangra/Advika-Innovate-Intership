@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 export default function HeroSection() {
   const navigate = useNavigate();
   const [pokemonList, setPokemonList] = useState([]);
 
-  
   useEffect(() => {
     async function fetchRandomPokemon() {
       const randomIds = Array.from({ length: 7 }, () =>
-        Math.floor(Math.random() * 905) + 1 
+        Math.floor(Math.random() * 905) + 1
       );
 
       const data = await Promise.all(
@@ -29,8 +29,7 @@ export default function HeroSection() {
     fetchRandomPokemon();
   }, []);
 
-  if (!pokemonList.length)
-    return <p className="text-center py-10 text-xl">Loading...</p>;
+  if (!pokemonList.length) return <Loader/>;
 
   const imgs = pokemonList.map((p) => p.img);
   const mainImg = imgs[3];
@@ -38,25 +37,32 @@ export default function HeroSection() {
   return (
     <section className="relative w-full py-20 flex flex-col items-center overflow-hidden">
 
-   
-      <div className="absolute w-[450px] h-[450px] rounded-full bg-indigo-400/10 dark:bg-indigo-600/10 blur-3xl"></div>
+      {/* ⭐ Responsive Gradient (Only this updated) */}
+      <div className="
+        absolute 
+        w-64 h-64 
+        sm:w-80 sm:h-80
+        md:w-[350px] md:h-[350px]
+        lg:w-[450px] lg:h-[450px]
+        rounded-full 
+        bg-indigo-400/10 
+        dark:bg-indigo-600/10 
+        blur-3xl">
+      </div>
 
       <div className="relative z-10 flex flex-col items-center gap-6 px-6 md:px-12 w-full">
 
-      
         <div className="flex justify-around w-full max-w-5xl gap-6">
           <Circle img={imgs[0]} id={pokemonList[0].id} navigate={navigate} />
           <Circle img={imgs[1]} id={pokemonList[1].id} navigate={navigate} />
         </div>
 
-    
         <div className="flex justify-between items-center w-full max-w-5xl gap-6">
           <Circle img={imgs[2]} id={pokemonList[2].id} navigate={navigate} />
           <Circle img={mainImg} id={pokemonList[3].id} big navigate={navigate} />
           <Circle img={imgs[4]} id={pokemonList[4].id} navigate={navigate} />
         </div>
 
-       
         <div className="flex justify-around w-full max-w-5xl gap-6">
           <Circle img={imgs[5]} id={pokemonList[5].id} navigate={navigate} />
           <Circle img={imgs[6]} id={pokemonList[6].id} navigate={navigate} />
@@ -65,7 +71,6 @@ export default function HeroSection() {
     </section>
   );
 }
-
 
 function Circle({ img, big, id, navigate }) {
   return (

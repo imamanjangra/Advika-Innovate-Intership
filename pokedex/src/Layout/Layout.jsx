@@ -4,7 +4,7 @@ import SearchBar from "../Components/SearchBox";
 
 export default function Layout() {
       return (
-    <div className="min-h-screen dark:bg-gray-900 dark:text-white flex flex-col">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
 
      
       <Navbar />

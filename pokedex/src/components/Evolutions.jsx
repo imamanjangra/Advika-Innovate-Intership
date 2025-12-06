@@ -18,9 +18,9 @@ export default function Evolutions({ data }) {
     <div>
       <h2 className="text-2xl font-semibold text-center mb-4">Evolution</h2>
 
-      <div className="flex justify-center items-center gap-10">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10">
         {chain.map((item, index) => (
-          <div key={index} className="flex items-center gap-6">
+          <div key={index} className="flex flex-col md:flex-row items-center gap-6">
 
             <div
               onClick={() => navigate(`/detailsPage/${item.id}`)}
@@ -35,8 +35,12 @@ export default function Evolutions({ data }) {
 
             {index !== chain.length - 1 && (
               <span className="text-3xl font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
-                   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-arrow-right md:block hidden" viewBox="0 0 16 16">
+                   <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="md:hidden block" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.293l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 12.793V1.5A.5.5 0 0 1 8 1"/>
                 </svg>
               </span>
             )}
