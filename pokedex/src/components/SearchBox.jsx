@@ -47,7 +47,6 @@ export default function SearchBar() {
     <form className="w-full relative px-4" onSubmit={handleSubmit}>
       <div className="max-w-lg mx-auto mt-6 relative">
 
-        {/* --- Fixed Row Layout --- */}
         <div className="flex items-center gap-2 flex-nowrap p-5">
 
           <input
