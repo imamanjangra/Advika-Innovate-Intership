@@ -1,13 +1,26 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [mode , setMode] = useState(true)
+  
+  useEffect(() => {
+    const savedTheme = JSON.parse(localStorage.getItem("theme"));
+    
+    if (savedTheme === true) {
+      setMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+  
+  useEffect(() => {
+   localStorage.setItem("theme", JSON.stringify(mode));
+ }, [mode]);
+
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setMode(!mode)
   };
-
   return (
     <header className="w-full sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow-md transition">
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">

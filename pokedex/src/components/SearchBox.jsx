@@ -30,13 +30,12 @@ export default function SearchBar() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!ivalue) return;
-    navigate(`/Serch/${ivalue.toLowerCase()}`);
-    setSuggestions([]);
-    setivalue("");
-  };
-
+  e.preventDefault();
+  if (!ivalue) return;
+  navigate(`/Serch/${ivalue}`);
+  setSuggestions([]);
+  setivalue("");
+};
 
   const handleSelect = (name) => {
     navigate(`/Serch/${name.toLowerCase()}`);

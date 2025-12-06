@@ -6,11 +6,11 @@ import PokemonMainInfo from "../components/PokemonMainInfo";
 import StatsChart from "../components/StatsChart";
 import Evolutions from "../components/Evolutions";
 import MovesList from "../components/MovesList";
-import PokemonImageViewer from "../components/PokemonImageViewer";
+// import PokemonImageViewer from "../components/PokemonImageViewer";
 
 export default function PokemonDetailsPage() {
 
-  const { id } = useParams();
+  const { id } = useParams(); 
   const api_data = detailpage_api(id);
   console.log(api_data);
   if (!api_data) return <p className="text-center p-10 text-xl">Loading...</p>;
@@ -31,10 +31,10 @@ export default function PokemonDetailsPage() {
         </div>
 
         
-        <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
+        {/* <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
         dark:bg-white/5 dark:border-white/10">
           <PokemonImageViewer id={id}/>
-        </div>
+        </div> */}
         <div className="p-6 rounded-xl bg-white border shadow-md border-gray-200 
         dark:bg-white/5 dark:border-white/10">
           <StatsChart data={api_data} />
