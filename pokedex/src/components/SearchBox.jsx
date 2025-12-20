@@ -24,7 +24,8 @@ export default function SearchBar() {
         .filter((p) => p.name.toLowerCase().includes(value))
         .slice(0, 10);
       setSuggestions(matches);
-    } else {
+    }
+     else {
       setSuggestions([]);
     }
   };

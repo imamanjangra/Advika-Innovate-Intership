@@ -26,3 +26,7 @@ export default function detailpage_api(id) {
 
   return data;
 }
+// haskedfh
+
+
+
